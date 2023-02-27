@@ -19,7 +19,7 @@ variable "release_label" {
 }
 variable "applications" {
   type = list(string)
-  default = ["Hadoop", "Spark", "Presto", "Hive", "JupyterEnterpriseGateway"]
+  default = ["Hadoop", "Spark", "Presto", "Hive", "Livy", "JupyterEnterpriseGateway"]
 }
 
 variable "master_instance_type" {

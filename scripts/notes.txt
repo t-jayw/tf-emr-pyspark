@@ -1,1 +1,6 @@
 aws glue start-crawler --name glue-crawler-tjw-spark-demo-382771737-raw-bucket
+
+start emr notebook from regular IAM user not root
+
+ignore PyYAML for jupyter enterprise install
+

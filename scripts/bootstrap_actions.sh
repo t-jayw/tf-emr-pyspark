@@ -1,15 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash -xe
 
-# install conda
-wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh \
-    && /bin/bash ~/miniconda.sh -b -p $HOME/conda
+pyv="$(python3 -V 2>&1)"
+echo "$pyv"
 
-echo -e '\nexport PATH=$HOME/conda/bin:$PATH' >> $HOME/.bashrc && source $HOME/.bashrc
+# # install some useful python packages
+sudo python3 -m pip install --upgrade pip
+sudo python3 -m pip install --user pandas matplotlib boto3
 
-# install packages
-conda install -y notebook=5.7.* jupyter=1.0.* pandas seaborn
+sudo python3 -m pip install jupyter
 
-#install findspark
-pip install --upgrade pip
-pip install findspark
-pip install sklearn
+sudo python3 -m pip install jupyter_enterprise_gateway --ignore-installed PyYAML
+

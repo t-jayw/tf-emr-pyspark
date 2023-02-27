@@ -15,12 +15,12 @@ resource "aws_s3_bucket_object" "bootstrap_action_file" {
   depends_on = ["aws_s3_bucket.create_bucket"]
 }
 
-resource "aws_s3_bucket_object" "pyspark_quick_setup_file" {
-  bucket     = "${var.name}"
-  key        = "scripts/pyspark_quick_setup.sh"
-  source     = "scripts/pyspark_quick_setup.sh"
-  depends_on = ["aws_s3_bucket.create_bucket"]
-}
+/* resource "aws_s3_bucket_object" "pyspark_quick_setup_file" { */
+/*   bucket     = "${var.name}" */
+/*   key        = "scripts/pyspark_quick_setup.sh" */
+/*   source     = "scripts/pyspark_quick_setup.sh" */
+/*   depends_on = ["aws_s3_bucket.create_bucket"] */
+/* } */
 
 resource "aws_s3_bucket" "raw_bucket" {
   bucket = "${var.name}-raw-bucket"

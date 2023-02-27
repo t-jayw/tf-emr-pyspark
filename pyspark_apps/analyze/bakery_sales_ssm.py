@@ -11,8 +11,6 @@ from pyspark.sql import SparkSession
 
 os.environ['AWS_DEFAULT_REGION'] = ec2_metadata.region
 
-ssm_client = boto3.client('ssm')
-
 
 def main():
     params = get_parameters()
@@ -24,7 +22,7 @@ def main():
 
     df_bakery = spark.read \
         .format("parquet") \
-        .load(f"s3a://{params['silver_bucket']}/bakery/")
+        .load(f"s3a://tjw-spark-demo-382771737-raw-bucket/bakery/BreadBasket_DMS.csv")
 
     df_sorted = df_bakery.cube("item").count() \
         .filter("item NOT LIKE 'NONE'") \
@@ -33,7 +31,7 @@ def main():
 
     # write parquet
     df_sorted.write.format("parquet") \
-        .save(f"s3a://{params['gold_bucket']}/bakery/bakery_sales/parquet/", mode="overwrite")
+        .save(f"s3a://tjw-spark-demo-382771737-raw-bucket/processed/bakery/BreadBasket_DMS.csv", mode="overwrite")
 
     # write single csv file for use with Excel
     df_sorted.coalesce(1) \
@@ -41,17 +39,6 @@ def main():
         .option("header", "true") \
         .options(delimiter='|') \
         .save(f"s3a://{params['gold_bucket']}/bakery/bakery_sales/csv/", mode="overwrite")
-
-
-def get_parameters():
-    """Load parameter values from AWS Systems Manager (SSM) Parameter Store"""
-
-    params = {
-        'silver_bucket': ssm_client.get_parameter(Name='/emr_demo/silver_bucket')['Parameter']['Value'],
-        'gold_bucket': ssm_client.get_parameter(Name='/emr_demo/gold_bucket')['Parameter']['Value'],
-    }
-
-    return params
 
 
 if __name__ == "__main__":
