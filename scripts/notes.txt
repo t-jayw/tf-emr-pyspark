@@ -4,3 +4,6 @@ start emr notebook from regular IAM user not root
 
 ignore PyYAML for jupyter enterprise install
 
+https://towardsdatascience.com/production-data-processing-with-apache-spark-96a58dfd3fe7
+
+
