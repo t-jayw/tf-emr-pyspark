@@ -1,28 +1,9 @@
-# Terraform + EMR Bootstrap PySpark with Anaconda
+Kind of a spin-off of this blog demoing pyspark on emr
 
-This code should help to jump start PySpark with Anaconda on AWS using Terraform.
+https://medium.com/swlh/running-pyspark-applications-on-amazon-emr-e536b7a865ca
 
-## Getting Started
-1. Install Terraform on Mac: `brew install terraform`
-2. Adjust the scripts (`bootstrap_actions.sh` and `pyspark_quick_setup.sh`) in `scripts` if necessary
-3. Set parameters in `terraform.tfvars`
-4. Start cluster:
-```
-terraform init
-terraform apply
-```
-5. Destroy cluster:
-```
-terraform destroy
-```
+But all the infra is spun up w/ terraform -- so not exactly the same. 
 
-### Notes
-* Configure AWS on your local machine: `aws configure`
-* [AWS instance cost](https://aws.amazon.com/emr/pricing/) for `eu-central-1`
+Still will be using the same datasets (he links to kaggle sets) but resources like the s3 buckets will be named differently. 
 
-## Maintainers
-* Dat Tran, github: [datitran](https://github.com/datitran)
-
-## Copyright
-
-See [LICENSE](LICENSE) for details.
+look in the root modules variables.tf for vars you can set that will be applied throughout.
