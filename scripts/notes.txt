@@ -1,0 +1,1 @@
+aws glue start-crawler --name glue-crawler-tjw-spark-demo-382771737-raw-bucket
