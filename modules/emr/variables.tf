@@ -14,3 +14,4 @@ variable "emr_service_role" {}
 variable "emr_autoscaling_role" {}
 variable "applications" {}
 variable "log_uri" {}
+variable "bootstrap_path" {}

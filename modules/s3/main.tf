@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "create_bucket" {
-  bucket = "${var.name}"
+resource "aws_s3_bucket" "scripts_bucket" {
+  bucket = "${var.name}-scripts"
   acl    = "private"
 
   tags = {
@@ -9,18 +9,16 @@ resource "aws_s3_bucket" "create_bucket" {
 }
 
 resource "aws_s3_bucket_object" "bootstrap_action_file" {
-  bucket     = "${var.name}"
+  bucket     = aws_s3_bucket.scripts_bucket.bucket
   key        = "scripts/bootstrap_actions.sh"
   source     = "scripts/bootstrap_actions.sh"
-  depends_on = ["aws_s3_bucket.create_bucket"]
 }
 
-/* resource "aws_s3_bucket_object" "pyspark_quick_setup_file" { */
-/*   bucket     = "${var.name}" */
-/*   key        = "scripts/pyspark_quick_setup.sh" */
-/*   source     = "scripts/pyspark_quick_setup.sh" */
-/*   depends_on = ["aws_s3_bucket.create_bucket"] */
-/* } */
+resource "aws_s3_bucket_object" "book_reviews_app" {
+  bucket     = aws_s3_bucket.scripts_bucket.bucket
+  key        = "scripts/amzn_review_analysis.py"
+  source     = "scripts/amzn_review_analysis.py"
+}
 
 resource "aws_s3_bucket" "raw_bucket" {
   bucket = "${var.name}-raw-bucket"

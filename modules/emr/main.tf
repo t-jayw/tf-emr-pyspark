@@ -48,9 +48,8 @@ resource "aws_emr_cluster" "emr-spark-cluster" {
 
   bootstrap_action {
     name = "Bootstrap setup."
-    path = "s3://${var.name}/scripts/bootstrap_actions.sh"
+    path = "s3://${var.bootstrap_path}"
   }
-
 
   log_uri = "s3://${var.log_uri}"
 

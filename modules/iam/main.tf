@@ -98,3 +98,8 @@ resource "aws_iam_policy" "allow_logging" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy_attachment" "example_policy_attachment" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+  role       = aws_iam_role.emr_ec2_instance_profile.name
+}

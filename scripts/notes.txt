@@ -6,4 +6,11 @@ ignore PyYAML for jupyter enterprise install
 
 https://towardsdatascience.com/production-data-processing-with-apache-spark-96a58dfd3fe7
 
+finding specific output logs:
+https://stackoverflow.com/questions/67069405/how-to-see-output-from-executors-on-amazon-emr
+
+rm -rf logs; 
+aws s3 cp --recursive s3://tjw-spark-demo-logs-bucket/j-MKUB3KP04KU3/ logs;
+find . -type f -exec gunzip {} \;
+grep -inR "startofpythonlogs" logs/ | cut -d':' -f1
 

@@ -39,6 +39,7 @@ module "emr" {
   source                    = "./modules/emr"
   name                      = "${var.name}"
   release_label             = "${var.release_label}"
+  bootstrap_path            = "${module.s3.scripts_bucket}/scripts/bootstrap_actions.sh"
   applications              = "${var.applications}"
   subnet_id                 = module.network.vpc_public_subnet_ids[0]
   log_uri                   = module.s3.logs_bucket
@@ -55,3 +56,9 @@ module "emr" {
   emr_autoscaling_role      = "${module.iam.emr_autoscaling_role}"
 }
 
+# Set up some params so they can be utilized in .py files
+resource "aws_ssm_parameter" "analyzed_bucket" {
+  name  = "/spark_demo/analyzed_bucket"
+  type  = "String"
+  value = module.s3.processed_bucket
+}

@@ -3,11 +3,11 @@
 pyv="$(python3 -V 2>&1)"
 echo "$pyv"
 
+sudo yum install python3-pip -y
+
 # # install some useful python packages
-sudo python3 -m pip install --upgrade pip
-sudo python3 -m pip install --user pandas matplotlib boto3
+sudo pip3 install pandas matplotlib boto3
 
-sudo python3 -m pip install jupyter
-
-sudo python3 -m pip install jupyter_enterprise_gateway --ignore-installed PyYAML
+pip3 install jupyter
+pip3 install jupyter_enterprise_gateway --ignore-installed PyYAML
 

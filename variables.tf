@@ -1,6 +1,6 @@
 variable "name"  {
   type = string
-  default = "tjw-spark-demo-382771737"
+  default = "tjw-spark-demo"
 }
 
 variable "infra_env" {
