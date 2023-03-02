@@ -14,6 +14,3 @@ pip3 install jupyter
 
 # copy the scripts s3 bucket where we parked scripts
 # aws s3 sync s3://$(aws s3 ls | grep scripts | cut -d' ' -f3) scripts
-#
-export PYTHONPATH="${PYTHONPATH}:/home/hadoop/.local/lib/python3.7/site-package"
-
