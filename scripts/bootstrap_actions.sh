@@ -6,14 +6,16 @@ echo "$pyv"
 sudo yum install python3-pip -y
 
 # # install some useful python packages
-pip3 install --user pandas matplotlib boto3
-
-pip3 install jupyter
-# maybe installed in var.applications?
-# pip3 install jupyter_enterprise_gateway --ignore-installed PyYAML
+sudo python3 -m pip install \
+    pandas \
+    matplotlib \
+    boto3 \
+    jupyter \
+    matplotlib \
+    seaborn \
+    ipython
 
 # copy the scripts s3 bucket where we parked scripts
 # aws s3 sync s3://$(aws s3 ls | grep scripts | cut -d' ' -f3) scripts
-#
-export PYTHONPATH="${PYTHONPATH}:/home/hadoop/.local/lib/python3.7/site-package"
 
+export foo=bar

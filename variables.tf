@@ -19,32 +19,32 @@ variable "release_label" {
 }
 variable "applications" {
   type = list(string)
-  default = ["Hadoop", "Spark", "Presto", "Hive", "Livy", "JupyterEnterpriseGateway"]
+  default = ["Hadoop", "Spark", "Presto", "Hive", "Livy"]
 }
 
 variable "master_instance_type" {
   type = string
-  default = "m5.xlarge"
+  default = "m4.large"
 }
 
 variable "master_ebs_size" {
   type = number
-  default = 32
+  default = 16
 }
 
 variable "core_instance_type" {
   type = string
-  default = "r5.2xlarge"
+  default = "m4.large"
 }
 
 variable "core_instance_count" {
   type = number
-  default = 2
+  default = 1
 }
 
 variable "core_ebs_size" {
   type = number
-  default = 32
+  default = 16
 }
 
 variable "vpc_cidr_block" {

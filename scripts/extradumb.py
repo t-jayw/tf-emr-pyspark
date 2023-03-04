@@ -7,7 +7,8 @@ print([tup[1] for tup in pkgutil.iter_modules()])
 
 import sys
 print(sys.path)
-#import boto3
+print(sys.executable)
+import boto3
 
 help('modules')
 
@@ -17,7 +18,7 @@ def get_params():
     processed_bucket = ssm_client.get_parameter(
         Name='/spark_demo/analyzed_bucket'
     )['Parameter']['Value']
-    
+
     params = {
         'processed_bucket': processed_bucket
     }
