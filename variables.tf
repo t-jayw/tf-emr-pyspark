@@ -39,12 +39,12 @@ variable "core_instance_type" {
 
 variable "core_instance_count" {
   type = number
-  default = 1
+  default = 2
 }
 
 variable "core_ebs_size" {
   type = number
-  default = 16
+  default = 32
 }
 
 variable "vpc_cidr_block" {
